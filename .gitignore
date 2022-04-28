@@ -33,6 +33,11 @@
 
 # Cached File VS 
 /ipch
+*.ipch
+*.idb
+*.pdb
+*.tlog
+*.log
 *.aps
 *.ncb
 *.opendb
