@@ -21,6 +21,9 @@
     <ClInclude Include="SelectionProblemSolution.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MinHeap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Person.cpp">
@@ -30,6 +33,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SelectionProblemSolution.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MinHeap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectionSolutionHeap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
