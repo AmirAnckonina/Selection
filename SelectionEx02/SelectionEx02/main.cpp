@@ -16,26 +16,9 @@ bool IsKeyIDExist(vector<Person> i_PersonArr, int i_ArrSize, int i_KeyID)
 
 int main()
 {
-	int n, keyID;
-	string name;
-	vector<Person> personArr;
+	SelectionSolutionProgram selectionProgram;
 
-	cout << "Please enter the number of person: ";
-	cin >> n;
-
-	cout << "Please enter " << n << " pepole:" << endl;
-	for (int i = 0; i < n; i++)
-	{
-		cout << "Enter " << "#" << i + 1 << " person: [ID, Name]" << endl;
-		cin >> keyID >> name;
-		while (IsKeyIDExist(personArr, n, keyID))
-		{
-			cout << "Invalid input, ID already exist." << endl;
-			exit(1);
-		}
-		personArr.push_back({ keyID, name });
-	}
-
+	selectionProgram.Run();
 
 	return 0;
 }
