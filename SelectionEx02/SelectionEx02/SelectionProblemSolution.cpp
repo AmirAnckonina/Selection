@@ -10,7 +10,24 @@ void SelectionSolutionProgram::Run()
 void SelectionSolutionProgram::InputProcedure(vector<Person> o_PersonArr)
 {
 
+	int n, keyID;
+	string name;
 
+	cout << "Please enter the number of person: ";
+	cin >> n;
+
+	cout << "Please enter " << n << " pepole:" << endl;
+	for (int i = 0; i < n; i++)
+	{
+		cout << "Enter " << "#" << i + 1 << " person: [ID, Name]" << endl;
+		cin >> keyID >> name;
+		while (IsKeyIDExist(personArr, n, keyID))
+		{
+			cout << "Invalid input, ID already exist." << endl;
+			exit(1);
+		}
+		o_PersonArr.push_back({ keyID, name });
+	}
 }
 
 
