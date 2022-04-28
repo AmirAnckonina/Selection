@@ -5,8 +5,9 @@
 
 int main()
 {
-	SelectionProblemSolution selctionProgram;
+	SelectionSolutionProgram selectionProgram;
 
+	selectionProgram.Run();
 
 	return 0;
 }

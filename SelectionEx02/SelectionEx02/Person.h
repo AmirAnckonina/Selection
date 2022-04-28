@@ -8,7 +8,8 @@
 
 using namespace std;
 
-class Person {
+class Person 
+{
 	int m_KeyID;
 	string m_Name;
 
