@@ -31,6 +31,17 @@ void SelectionSolutionProgram::InputProcedure(vector<Person> o_PersonArr)
 }
 
 
+bool SelectionSolutionProgram::IsKeyIDExist(vector<Person> i_PersonArr, int i_ArrSize, int i_KeyID)
+{
+	for (int i = 0; i < i_ArrSize; i++) {
+		if (i_PersonArr[i].GetKeyID() == i_KeyID)
+			return false;
+	}
+
+	return true;
+}
+
+
 const Person& SelectionSolutionProgram::SelectionRandWrapper(vector<Person> io_PersonArr, int i_NumOfPersons, int i_KPersonIndex, int& io_NumComp)
 {
 	io_NumComp = 0;
