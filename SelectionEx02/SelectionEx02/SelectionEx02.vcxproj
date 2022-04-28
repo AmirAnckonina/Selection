@@ -19,13 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MinHeap.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="SelectionProblemSolution.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="MinHeap.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="SelectionProblemSolution.cpp" />
+    <ClCompile Include="SelectionSolutionHeap.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

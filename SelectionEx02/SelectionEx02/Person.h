@@ -13,6 +13,8 @@ class Person {
 	string m_Name;
 
 public:
+	Person(int i_KeyID, string i_Name) : m_KeyID(i_KeyID), m_Name(i_Name) {}
+
 	int GetKeyID() { return m_KeyID; }
 	string GetName() { return m_Name; }
 };
