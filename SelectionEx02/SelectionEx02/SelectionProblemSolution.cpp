@@ -16,12 +16,14 @@ void SelectionSolutionProgram::InputProcedure(vector<Person> o_PersonArr)
 	cout << "Please enter the number of person: ";
 	cin >> n;
 
+	/// assignVectorOfPersons();
+
 	cout << "Please enter " << n << " pepole:" << endl;
 	for (int i = 0; i < n; i++)
 	{
 		cout << "Enter " << "#" << i + 1 << " person: [ID, Name]" << endl;
 		cin >> keyID >> name;
-		while (IsKeyIDExist(personArr, n, keyID))
+		while (IsKeyIDExist(o_PersonArr, n, keyID))
 		{
 			cout << "Invalid input, ID already exist." << endl;
 			exit(1);
