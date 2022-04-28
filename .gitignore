@@ -30,3 +30,16 @@
 *.exe
 *.out
 *.app
+
+# Cached File VS 
+/ipch
+*.aps
+*.ncb
+*.opendb
+*.opensdf
+*.sdf
+*.cachefile
+*.db
+*.db-shm
+*.VC
+*.sou
