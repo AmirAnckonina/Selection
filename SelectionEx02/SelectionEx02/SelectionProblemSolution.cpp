@@ -2,15 +2,27 @@
 
 void SelectionSolutionProgram::Run()
 {
-	vector<Person> personArr;
+	vector<Person> personArr = {};
 	InputProcedure(personArr);
 }
+
+//void SelectionSolutionProgram::AssignVectorOfPersons(vector<Person> io_PersonArr, int i_NumOfPersons)
+//{
+//	/// Person newPerson;
+//	for (int i = 0; i < i_NumOfPersons; i++)
+//	{
+//		io_PersonArr[i]
+//	}
+//}
 
 void SelectionSolutionProgram::InputProcedure(vector<Person> o_PersonArr)
 {
 
 	int n, keyID;
+	int spacePos;
 	string name;
+	string line;
+	string tempsubstr;
 
 	cout << "Please enter the number of person: ";
 	cin >> n;
@@ -21,8 +33,9 @@ void SelectionSolutionProgram::InputProcedure(vector<Person> o_PersonArr)
 	for (int i = 0; i < n; i++)
 	{
 		cout << "Enter " << "#" << i + 1 << " person: [ID, Name]" << endl;
-		cin >> keyID >> name;
-		while (IsKeyIDExist(o_PersonArr, n, keyID))
+		cin >> keyID;
+		getline(cin, name);
+		if (IsKeyIDExist(o_PersonArr, keyID))
 		{
 			cout << "Invalid input, ID already exist." << endl;
 			exit(1);
@@ -31,14 +44,14 @@ void SelectionSolutionProgram::InputProcedure(vector<Person> o_PersonArr)
 	}
 }
 
-bool SelectionSolutionProgram::IsKeyIDExist(vector<Person> i_PersonArr, int i_ArrSize, int i_KeyID)
+bool SelectionSolutionProgram::IsKeyIDExist(vector<Person> i_PersonArr, int i_KeyID)
 {
-	for (int i = 0; i < i_ArrSize; i++) {
+	for (int i = 0; i < i_PersonArr.size(); i++) {
 		if (i_PersonArr[i].GetKeyID() == i_KeyID)
-			return false;
+			return true;
 	}
 
-	return true;
+	return false;
 }
 
 const Person& SelectionSolutionProgram::SelectionRandWrapper(vector<Person> io_PersonArr, int i_NumOfPersons, int i_KPersonIndex, int& io_NumComp)
