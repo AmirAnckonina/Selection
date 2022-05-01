@@ -24,6 +24,9 @@
     <ClInclude Include="MinHeap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SelectionSolutionHeap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Person.cpp">

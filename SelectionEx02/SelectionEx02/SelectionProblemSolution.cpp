@@ -4,7 +4,6 @@ void SelectionSolutionProgram::Run()
 {
 	vector<Person> personArr;
 	InputProcedure(personArr);
-
 }
 
 void SelectionSolutionProgram::InputProcedure(vector<Person> o_PersonArr)
@@ -32,7 +31,6 @@ void SelectionSolutionProgram::InputProcedure(vector<Person> o_PersonArr)
 	}
 }
 
-
 bool SelectionSolutionProgram::IsKeyIDExist(vector<Person> i_PersonArr, int i_ArrSize, int i_KeyID)
 {
 	for (int i = 0; i < i_ArrSize; i++) {
@@ -42,7 +40,6 @@ bool SelectionSolutionProgram::IsKeyIDExist(vector<Person> i_PersonArr, int i_Ar
 
 	return true;
 }
-
 
 const Person& SelectionSolutionProgram::SelectionRandWrapper(vector<Person> io_PersonArr, int i_NumOfPersons, int i_KPersonIndex, int& io_NumComp)
 {

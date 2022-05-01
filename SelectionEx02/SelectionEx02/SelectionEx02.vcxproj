@@ -22,6 +22,7 @@
     <ClInclude Include="MinHeap.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="SelectionProblemSolution.h" />
+    <ClInclude Include="SelectionSolutionHeap.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MinHeap.cpp" />
