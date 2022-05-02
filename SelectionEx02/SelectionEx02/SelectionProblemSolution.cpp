@@ -6,15 +6,6 @@ void SelectionSolutionProgram::Run()
 	InputProcedure(personArr);
 }
 
-//void SelectionSolutionProgram::AssignVectorOfPersons(vector<Person> io_PersonArr, int i_NumOfPersons)
-//{
-//	/// Person newPerson;
-//	for (int i = 0; i < i_NumOfPersons; i++)
-//	{
-//		io_PersonArr[i]
-//	}
-//}
-
 void SelectionSolutionProgram::InputProcedure(vector<Person> o_PersonArr)
 {
 
