@@ -38,12 +38,7 @@ void MinHeap::Swap(int i_NodeInd1, int i_NodeInd2)
 	m_PersonData[i_NodeInd2] = temp;
 }
 
-//Heap::Heap(int i_Max) // Is needed ?!
-//{
-//
-//}
-
-MinHeap::MinHeap(vector<Person> i_PersonArr, int i_Size, int& io_NumComp)
+MinHeap::MinHeap(Person* i_PersonArr, int i_Size, int& io_NumComp)
 {
 	BuildHeap(i_PersonArr, i_Size, io_NumComp);
 }
@@ -53,17 +48,19 @@ MinHeap::~MinHeap()
 	MakeEmpty();
 }
 
-Person MinHeap::Min()
+Person& MinHeap::Min()
 {
 	return m_PersonData[0];
 }
 
-Person MinHeap::DeleteMin(int& io_NumComp)
+Person* MinHeap::DeleteMin(int& io_NumComp)
 {
-	if (m_HeapSize < 1) {}
-	// Handle Error.
+	if (m_HeapSize < 1) {
+		cout << "Invalid operaion!" << endl;
+		exit(1);
+	}
 
-	Person min = m_PersonData[0];
+	Person* min = new Person(Min());
 	m_HeapSize--;
 	m_PersonData[0] = m_PersonData[m_HeapSize - 1]; // minus 1?
 	FixHeap(0, io_NumComp);
@@ -88,7 +85,7 @@ void MinHeap::Insert(Person i_NewPerson, int& io_NumComp)
 	m_PersonData[i] = i_NewPerson;
 }
 
-void MinHeap::BuildHeap(vector<Person> i_PersonArr, int i_Size, int& io_NumComp)
+void MinHeap::BuildHeap(Person* i_PersonArr, int i_Size, int& io_NumComp)
 {
 	m_HeapSize = m_MaxSize = i_Size;
 
