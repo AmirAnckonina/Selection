@@ -18,4 +18,6 @@ public:
 
 	int GetKeyID() { return m_KeyID; }
 	string GetName() { return m_Name; }
+	void PrintPersonDetails();
+
 };

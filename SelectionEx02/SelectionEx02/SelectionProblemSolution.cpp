@@ -2,45 +2,54 @@
 
 void SelectionSolutionProgram::Run()
 {
-	vector<Person> personArr = {};
-	InputProcedure(personArr);
+	InputProcedure();
+	m_KthPerson = GetKthPerson();
+	Person selectedPerson = SelectionRandWrapper(m_PersonArr, m_NumOfPersons, m_KthPerson);
+	selectedPerson.PrintPersonDetails();
 }
 
-//void SelectionSolutionProgram::AssignVectorOfPersons(vector<Person> io_PersonArr, int i_NumOfPersons)
-//{
-//	/// Person newPerson;
-//	for (int i = 0; i < i_NumOfPersons; i++)
-//	{
-//		io_PersonArr[i]
-//	}
-//}
+int SelectionSolutionProgram::GetKthPerson()
+{
+	int kthPerson;
 
-void SelectionSolutionProgram::InputProcedure(vector<Person> o_PersonArr)
+	cout << "Please enter the 'k' largest Person you want by key :";
+	cin >> kthPerson;
+
+	return kthPerson;
+}
+
+void SelectionSolutionProgram::InputProcedure()
 {
 
-	int n, keyID;
-	int spacePos;
-	string name;
+	int keyID;
+	istringstream iss;
+	string fullName;
+	string firstName;
+	string lastName;
 	string line;
-	string tempsubstr;
+
 
 	cout << "Please enter the number of person: ";
-	cin >> n;
+	cin >> m_NumOfPersons;
+	cin.ignore();
 
-	/// assignVectorOfPersons();
-
-	cout << "Please enter " << n << " pepole:" << endl;
-	for (int i = 0; i < n; i++)
+	cout << "Please enter " << m_NumOfPersons << " pepole:" << endl;
+	for (int i = 0; i < m_NumOfPersons; i++)
 	{
 		cout << "Enter " << "#" << i + 1 << " person: [ID, Name]" << endl;
-		cin >> keyID;
-		getline(cin, name);
-		if (IsKeyIDExist(o_PersonArr, keyID))
+		getline(cin, line);
+		iss.clear();
+		iss.str(line);
+		iss >> keyID;
+		iss >> firstName;
+		iss >> lastName;
+		fullName = firstName + " " + lastName;
+		if (IsKeyIDExist(m_PersonArr, keyID))
 		{
 			cout << "Invalid input, ID already exist." << endl;
 			exit(1);
 		}
-		o_PersonArr.push_back({ keyID, name });
+		m_PersonArr.push_back({ keyID, fullName });
 	}
 }
 
@@ -54,10 +63,10 @@ bool SelectionSolutionProgram::IsKeyIDExist(vector<Person> i_PersonArr, int i_Ke
 	return false;
 }
 
-const Person& SelectionSolutionProgram::SelectionRandWrapper(vector<Person> io_PersonArr, int i_NumOfPersons, int i_KPersonIndex, int& io_NumComp)
+const Person& SelectionSolutionProgram::SelectionRandWrapper(vector<Person> io_PersonArr, int i_NumOfPersons, int i_KPersonIndex)
 {
-	io_NumComp = 0;
-	return SelectionRand(io_PersonArr, 0, i_NumOfPersons - 1, i_KPersonIndex, io_NumComp);
+	m_NumComp = 0;
+	return SelectionRand(io_PersonArr, 0, i_NumOfPersons - 1, i_KPersonIndex, m_NumComp);
 }
 
 const Person& SelectionSolutionProgram::SelectionRand(vector<Person> io_PersonArr, int i_LeftIndex, int i_RightIndex, int i_KPersonIndex, int& io_NumComp)
@@ -65,21 +74,21 @@ const Person& SelectionSolutionProgram::SelectionRand(vector<Person> io_PersonAr
 	int pivotIndex;
 
 	pivotIndex = Partition(io_PersonArr, i_LeftIndex, i_RightIndex);
-	if (i_KPersonIndex == pivotIndex)
+	if (i_KPersonIndex == pivotIndex + 1)
 	{
 		return io_PersonArr[pivotIndex];
 	}
 
-	else if (i_KPersonIndex < pivotIndex)
+	else if (i_KPersonIndex < pivotIndex + 1)
 	{
 		i_RightIndex = pivotIndex - 1;
 		return SelectionRand(io_PersonArr, i_LeftIndex, i_RightIndex, i_KPersonIndex, io_NumComp);
 	}
 
-	else /// i_KPersonIndex > pivotIndex
+	else /// i_KPersonIndex > pivotIndex + 1
 	{
 		i_LeftIndex = pivotIndex + 1;
-		i_KPersonIndex -= pivotIndex;
+		/// i_KPersonIndex -= pivotIndex;
 		return SelectionRand(io_PersonArr, i_LeftIndex, i_RightIndex, i_KPersonIndex, io_NumComp);
 	}
 }
@@ -124,7 +133,7 @@ int SelectionSolutionProgram::Partition(vector<Person> io_PersonArr, int i_LeftI
 		}
 	}
 
-	return randomPivot;
+	return i_LeftIndex;
 }
 
 
