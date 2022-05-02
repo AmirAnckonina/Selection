@@ -40,7 +40,7 @@ void SelectionSolutionHeap::InputProcedure(Person** o_PersonArr, int& o_ArrSize)
 		cout << "Enter " << "#" << i + 1 << " person: [ID, Name]" << endl;
 		cin >> keyID;
 		getline(cin, name);
-		if (IsKeyIDExist(*o_PersonArr, o_ArrSize, keyID))
+		if (IsKeyIDExist(*o_PersonArr, i, keyID))
 		{
 			cout << "Invalid input, ID already exist." << endl;
 			exit(1);
@@ -50,9 +50,9 @@ void SelectionSolutionHeap::InputProcedure(Person** o_PersonArr, int& o_ArrSize)
 	}
 }
 
-bool SelectionSolutionHeap::IsKeyIDExist(Person* i_PersonArr, int i_ArrSize, int i_KeyID)
+bool SelectionSolutionHeap::IsKeyIDExist(Person* i_PersonArr, int i_CurrArrSize, int i_KeyID)
 {
-	for (int i = 0; i < i_ArrSize; i++) {
+	for (int i = 0; i < i_CurrArrSize; i++) {
 		if (i_PersonArr[i].GetKeyID() == i_KeyID)
 			return true;
 	}
