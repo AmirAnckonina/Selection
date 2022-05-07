@@ -25,4 +25,5 @@ public:
 
 	void SetKeyID(int i_KeyID) { m_KeyID = i_KeyID; }
 	void SetName(string i_Name) { m_Name = i_Name; }
+	void PrintPersonDetails();
 };
