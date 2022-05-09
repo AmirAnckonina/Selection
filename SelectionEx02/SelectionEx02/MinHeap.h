@@ -2,7 +2,7 @@
 #include "Person.h"
 
 class MinHeap {
-	Person* m_PersonData;
+	vector<Person*> m_PersonData;
 	int m_MaxSize;
 	int m_HeapSize;
 	//int m_Allocated;
@@ -16,13 +16,13 @@ class MinHeap {
 
 public:
 	//Heap(int i_Max);
-	MinHeap(Person[], int i_Size, int& io_NumComp); // Turn i_Person[] into heap.
+	MinHeap(vector<Person*> i_PersonArr, int i_Size, int& io_NumComp); // Turn i_Person[] into heap.
 	~MinHeap();
 
-	Person& Min();
+	Person* Min();
 	Person* DeleteMin(int& io_NumComp);
-	void Insert(Person i_NewPerson, int& io_NumComp);
-	void BuildHeap(Person*, int i_Size, int& io_NumComp); // Using Floyd algorithm.
+	void Insert(Person* i_NewPerson, int& io_NumComp);
+	void BuildHeap(vector<Person*> i_PersonArr, int i_Size, int& io_NumComp); // Using Floyd algorithm.
 	void MakeEmpty();
 	bool IsEmpty();
 };

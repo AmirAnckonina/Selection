@@ -1,27 +1,45 @@
-#include "SelectionSolutionHeap.h"
+#include "SelectionSolutionTree.h"
 
-const Person& SelectionSolutionHeap::selectHeap(vector<Person*> i_PersonArr, int n, int k, int& io_NumComp)
+const Person& SelectionSolutionTree::BST(vector<Person*> i_PersonArr, int n, int k, int& io_NumComp)
 {
-	MinHeap minHeap(i_PersonArr, n, io_NumComp); // BuildHeap from array.
+	BinaryTree binaryTree(i_PersonArr, io_NumComp);
+	BinaryTreeNode* binaryTreeNode = binaryTree.GetRoot();
 
-	for (int i = 1; i < k; i++) {
-		minHeap.DeleteMin(io_NumComp);
+	while (binaryTreeNode->GetPersonData()->GetKeyID() != i_PersonArr[k - 1]->GetKeyID())
+	{
+		if (i_PersonArr[k - 1]->GetKeyID() > binaryTreeNode->GetPersonData()->GetKeyID())
+		{
+			// Right
+			binaryTreeNode = binaryTreeNode->GetRightNode();
+		}
+		else
+		{
+			// Left
+			binaryTreeNode = binaryTreeNode->GetLeftNode();
+		}
+
+		io_NumComp++;
 	}
 
-	return *(minHeap.DeleteMin(io_NumComp));
+	if (binaryTreeNode->GetPersonData()->GetKeyID() != i_PersonArr[k - 1]->GetKeyID())
+	{
+		io_NumComp++;
+		// Handle error.
+	}
+
+	return *(binaryTreeNode->GetPersonData());
 }
 
-
-void SelectionSolutionHeap::Run()
+void SelectionSolutionTree::Run()
 {
 	vector<Person*> personArr;
 	int NumComp = 0, arrSize = 0;
 	InputProcedure(personArr, arrSize);
-	Person retVal = selectHeap(personArr, arrSize, 2, NumComp);
+	Person retVal = BST(personArr, arrSize, 2, NumComp);
 }
 
 
-void SelectionSolutionHeap::InputProcedure(vector<Person*>& o_PersonArr, int& o_ArrSize)
+void SelectionSolutionTree::InputProcedure(vector<Person*>& o_PersonArr, int& o_ArrSize)
 {
 	int numOfPersons, keyID = 99;
 	istringstream iss;
@@ -79,7 +97,8 @@ void SelectionSolutionHeap::InputProcedure(vector<Person*>& o_PersonArr, int& o_
 	}
 }
 
-bool SelectionSolutionHeap::IsKeyIDExist(vector<Person*> i_PersonArr, int i_CurrArrSize, int i_KeyID)
+
+bool SelectionSolutionTree::IsKeyIDExist(vector<Person*> i_PersonArr, int i_CurrArrSize, int i_KeyID)
 {
 	for (int i = 0; i < i_CurrArrSize; i++) {
 		if (i_PersonArr[i]->GetKeyID() == i_KeyID)

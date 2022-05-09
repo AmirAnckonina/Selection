@@ -25,14 +25,17 @@
     <ClInclude Include="Person.h" />
     <ClInclude Include="SelectionProblemSolution.h" />
     <ClInclude Include="SelectionSolutionHeap.h" />
+    <ClInclude Include="SelectionSolutionTree.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BinaryTree.cpp" />
+    <ClCompile Include="BinaryTreeNode.cpp" />
     <ClCompile Include="MinHeap.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="SelectionProblemSolution.cpp" />
     <ClCompile Include="SelectionSolutionHeap.cpp" />
+    <ClCompile Include="SelectionSolutionTree.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
