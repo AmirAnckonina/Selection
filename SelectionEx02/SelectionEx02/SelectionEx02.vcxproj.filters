@@ -18,13 +18,25 @@
     <ClInclude Include="Person.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SelectionProblemSolution.h">
+    <ClInclude Include="SelectionProblem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MinHeap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SelectionSolutionHeap.h">
+    <ClInclude Include="RandSelectionProgram.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BSTSelectionProgram.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HeapSelectionProgram.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryTreeNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -35,13 +47,25 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SelectionProblemSolution.cpp">
+    <ClCompile Include="SelectionProblem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MinHeap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SelectionSolutionHeap.cpp">
+    <ClCompile Include="RandSelectionProgram.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BSTSelectionProgram.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HeapSelectionProgram.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BinaryTree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BinaryTreeNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

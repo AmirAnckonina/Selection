@@ -1,16 +1,13 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "SelectionProblemSolution.h"
-#include "SelectionSolutionHeap.h"
+#include "SelectionProblem.h"
+
 
 int main()
 {
-	SelectionSolutionProgram selectionProgram;
-	/// SelectionSolutionHeap selectionHeap;
-
-	/// SelectionSolutionHeap.Run();
-	selectionProgram.Run();
-
+	SelectionProblem selectionProblem;
+	
+	selectionProblem.Run();
 
 	return 0;
 }

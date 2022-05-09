@@ -5,7 +5,7 @@ void MinHeap::FixHeap(int i_NodeIndex, int& io_NumComp)
 	int minIndex, left = Left(i_NodeIndex), right = Right(i_NodeIndex);
 
 	// Find minimum among i_Node, left and right.
-	if (left < m_HeapSize && m_PersonData[left].GetKeyID() < m_PersonData[i_NodeIndex].GetKeyID())
+	if (left < m_HeapSize && m_PersonData[left]->GetKeyID() < m_PersonData[i_NodeIndex]->GetKeyID())
 	{
 		io_NumComp++;
 		minIndex = left;
@@ -15,7 +15,7 @@ void MinHeap::FixHeap(int i_NodeIndex, int& io_NumComp)
 		minIndex = i_NodeIndex;
 	}
 
-	if (right < m_HeapSize && m_PersonData[right].GetKeyID() < m_PersonData[minIndex].GetKeyID())
+	if (right < m_HeapSize && m_PersonData[right]->GetKeyID() < m_PersonData[minIndex]->GetKeyID())
 	{
 		io_NumComp++;
 		minIndex = right;
@@ -32,13 +32,13 @@ void MinHeap::FixHeap(int i_NodeIndex, int& io_NumComp)
 
 void MinHeap::Swap(int i_NodeInd1, int i_NodeInd2)
 {
-	Person temp = m_PersonData[i_NodeInd1];
+	Person* temp = m_PersonData[i_NodeInd1];
 
 	m_PersonData[i_NodeInd1] = m_PersonData[i_NodeInd2];
 	m_PersonData[i_NodeInd2] = temp;
 }
 
-MinHeap::MinHeap(Person* i_PersonArr, int i_Size, int& io_NumComp)
+MinHeap::MinHeap::MinHeap(vector<Person*> i_PersonArr, int i_Size, int& io_NumComp)
 {
 	BuildHeap(i_PersonArr, i_Size, io_NumComp);
 }
@@ -48,7 +48,12 @@ MinHeap::~MinHeap()
 	MakeEmpty();
 }
 
-Person& MinHeap::Min()
+//Person& MinHeap::Min()
+//{
+//	return m_PersonData[0];
+//}
+
+Person* MinHeap::Min()
 {
 	return m_PersonData[0];
 }
@@ -60,7 +65,7 @@ Person* MinHeap::DeleteMin(int& io_NumComp)
 		exit(1);
 	}
 
-	Person* min = new Person(Min());
+	Person* min = new Person((*Min()));
 	m_HeapSize--;
 	m_PersonData[0] = m_PersonData[m_HeapSize - 1]; // minus 1?
 	FixHeap(0, io_NumComp);
@@ -68,14 +73,14 @@ Person* MinHeap::DeleteMin(int& io_NumComp)
 	return min;
 }
 
-void MinHeap::Insert(Person i_NewPerson, int& io_NumComp)
+void MinHeap::Insert(Person* i_NewPerson, int& io_NumComp)
 {
 	if (m_HeapSize == m_MaxSize) {}
 
 	int i = m_HeapSize;
 	m_HeapSize++;
 
-	while ((i > 0) && (m_PersonData[Parent(i)].GetKeyID() > i_NewPerson.GetKeyID()))
+	while ((i > 0) && (m_PersonData[Parent(i)]->GetKeyID() > i_NewPerson->GetKeyID()))
 	{
 		io_NumComp++;
 		m_PersonData[i] = m_PersonData[Parent(i)];
@@ -85,7 +90,7 @@ void MinHeap::Insert(Person i_NewPerson, int& io_NumComp)
 	m_PersonData[i] = i_NewPerson;
 }
 
-void MinHeap::BuildHeap(Person* i_PersonArr, int i_Size, int& io_NumComp)
+void MinHeap::BuildHeap(vector<Person*> i_PersonArr, int i_Size, int& io_NumComp)
 {
 	m_HeapSize = m_MaxSize = i_Size;
 

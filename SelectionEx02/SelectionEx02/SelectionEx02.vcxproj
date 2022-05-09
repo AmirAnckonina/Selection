@@ -19,17 +19,25 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BinaryTree.h" />
+    <ClInclude Include="BinaryTreeNode.h" />
+    <ClInclude Include="BSTSelectionProgram.h" />
+    <ClInclude Include="HeapSelectionProgram.h" />
     <ClInclude Include="MinHeap.h" />
     <ClInclude Include="Person.h" />
-    <ClInclude Include="SelectionProblemSolution.h" />
-    <ClInclude Include="SelectionSolutionHeap.h" />
+    <ClInclude Include="RandSelectionProgram.h" />
+    <ClInclude Include="SelectionProblem.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BinaryTree.cpp" />
+    <ClCompile Include="BinaryTreeNode.cpp" />
+    <ClCompile Include="BSTSelectionProgram.cpp" />
+    <ClCompile Include="HeapSelectionProgram.cpp" />
     <ClCompile Include="MinHeap.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Person.cpp" />
-    <ClCompile Include="SelectionProblemSolution.cpp" />
-    <ClCompile Include="SelectionSolutionHeap.cpp" />
+    <ClCompile Include="RandSelectionProgram.cpp" />
+    <ClCompile Include="SelectionProblem.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
