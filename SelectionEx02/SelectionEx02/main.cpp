@@ -5,11 +5,11 @@
 
 int main()
 {
-	//SelectionSolutionProgram selectionProgram;
-	SelectionSolutionHeap selectionHeap;
+	SelectionSolutionProgram selectionProgram;
+	/// SelectionSolutionHeap selectionHeap;
 
-	//SelectionSolutionHeap.Run();
-	selectionHeap.Run();
+	/// SelectionSolutionHeap.Run();
+	selectionProgram.Run();
 
 
 	return 0;
