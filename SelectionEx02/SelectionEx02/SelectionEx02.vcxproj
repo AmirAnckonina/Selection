@@ -19,12 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BinaryTree.h" />
+    <ClInclude Include="BinaryTreeNode.h" />
     <ClInclude Include="MinHeap.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="SelectionProblemSolution.h" />
     <ClInclude Include="SelectionSolutionHeap.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BinaryTree.cpp" />
     <ClCompile Include="MinHeap.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Person.cpp" />

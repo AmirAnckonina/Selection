@@ -8,7 +8,7 @@ private:
 
 	friend class BinaryTree;
 public:
-	BinaryTreeNode();
-	BinaryTreeNode(Person i_Person, BinaryTreeNode* i_LeftNode, BinaryTreeNode* i_RightNode);
+	BinaryTreeNode() {};
+	BinaryTreeNode(Person i_Person, BinaryTreeNode* i_LeftNode, BinaryTreeNode* i_RightNode) {};
 	//~BinaryTreeNode();
 };

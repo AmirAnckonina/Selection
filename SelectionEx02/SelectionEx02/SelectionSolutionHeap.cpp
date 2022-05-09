@@ -20,33 +20,57 @@ void SelectionSolutionHeap::Run()
 	Person retVal = selectHeap(personArr, arrSize, 2, NumComp);
 }
 
+
 void SelectionSolutionHeap::InputProcedure(Person** o_PersonArr, int& o_ArrSize)
 {
-	int n, keyID;
-	int spacePos;
-	string name;
+	int numOfPersons, keyID = 99;
+	istringstream iss;
+	string tempNamePart;
+	string fullName;
 	string line;
-	string tempsubstr;
 
 	cout << "Please enter the number of person: ";
-	cin >> n;
-	o_ArrSize = n;
+	cin >> numOfPersons;
+	cin.ignore();
 
+	o_ArrSize = numOfPersons;
 	*o_PersonArr = new Person[o_ArrSize];
 
-	cout << "Please enter " << n << " pepole:" << endl;
-	for (int i = 0; i < n; i++)
+	cout << "Please enter " << numOfPersons << " pepole:" << endl;
+	for (int i = 0; i < numOfPersons; i++)
 	{
 		cout << "Enter " << "#" << i + 1 << " person: [ID, Name]" << endl;
-		cin >> keyID;
-		getline(cin, name);
+		getline(cin, line);
+		iss.clear();
+		iss.str(line);
+		fullName.clear();
+		iss >> keyID;
+
+		// Check valid KeyID;
+		if (keyID == 0) {
+			throw new exception("Invalid key ID!");
+		}
+
 		if (IsKeyIDExist(*o_PersonArr, i, keyID))
 		{
-			cout << "Invalid input, ID already exist." << endl;
-			exit(1);
+			throw new exception("Invalid input, ID already exist.");
 		}
-		(*o_PersonArr)[i].SetKeyID(keyID);
-		(*o_PersonArr)[i].SetName(name);
+
+		iss >> tempNamePart;
+
+		fullName += (tempNamePart + ' ');
+
+		while (!iss.eof()) {
+			iss >> tempNamePart;
+			fullName += (tempNamePart + ' ');
+		}
+
+		if (fullName.length() == 0) {
+			throw new exception("Invalid name!");
+		}
+
+		(*o_PersonArr)[i].SetKeyID((int)keyID);
+		(*o_PersonArr)[i].SetName((string)fullName);
 	}
 }
 
