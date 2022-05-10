@@ -38,7 +38,7 @@ void MinHeap::Swap(int i_NodeInd1, int i_NodeInd2)
 	m_PersonData[i_NodeInd2] = temp;
 }
 
-MinHeap::MinHeap::MinHeap(vector<Person*> i_PersonArr, int i_Size, int& io_NumComp)
+MinHeap::MinHeap(vector<Person*> i_PersonArr, int i_Size, int& io_NumComp)
 {
 	BuildHeap(i_PersonArr, i_Size, io_NumComp);
 }

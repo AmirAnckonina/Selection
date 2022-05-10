@@ -61,7 +61,12 @@ void BinaryTree::Insert(Person* i_Person, int& io_NumComp)
 		parent = temp;
 		if (i_Person->GetKeyID() < temp->m_PersonData->GetKeyID())
 			temp = temp->m_left;
-		else temp = temp->m_Right;
+
+		else if ((i_Person->GetKeyID() > temp->m_PersonData->GetKeyID()))
+			temp = temp->m_Right;
+
+		else /// Error -> matching keyID
+			throw new exception("Key ID Exist.");
 
 		io_NumComp++;
 	}
