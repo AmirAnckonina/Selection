@@ -1,5 +1,7 @@
 #include "SelectionProblem.h"
 
+const string SelectionProblem::EMPTYNAME = "";
+
 void SelectionProblem::Run()
 {
 	RandSelectionProgram randSelection;
@@ -8,25 +10,39 @@ void SelectionProblem::Run()
 	vector<Person*> personArr;
 	int numOfPersons = 0;
 	int kthPerson;
-	
-	InputProcedure(personArr, numOfPersons);
-	kthPerson = GetKthPerson();
+	int seed;
 
-	randSelection.Run(personArr, numOfPersons, kthPerson);
-	heapSelection.Run(personArr, numOfPersons, kthPerson);
-	bstSelection.Run(personArr, numOfPersons, kthPerson);
+	try
+	{
+		/*cin >> seed;
+		srand(seed);*/
+		InputProcedure(personArr, numOfPersons);
+		kthPerson = GetKthPerson(numOfPersons);
+		randSelection.Run(personArr, kthPerson);
+		heapSelection.Run(personArr, kthPerson);
+		bstSelection.Run(personArr, kthPerson);
+	}
+	catch (...)
+	{
+		exit(1);
+	}
 }
 
-void SelectionProblem::InputProcedure(vector<Person*>& o_PersonArr, int& o_ArrSize)
+void SelectionProblem::InputProcedure(vector<Person*>& o_PersonArr, int& o_NumOfPersons)
 {
 	Person* newPerson;
+	Person* newPersonCopy;
+	BinaryTree binaryTreeForKeysValidation;
+	int binaryTreeForKeysValidationNumOfComp = 0;
+	o_NumOfPersons = GetNumOfPersonsProcedure();
 
-	o_ArrSize = GetNumOfPersonsProcedure();
-
-	cout << "Please enter " << o_ArrSize << " pepole:" << endl;
-	for (int i = 0; i < o_ArrSize; i++)
+	cout << "Please enter " << o_NumOfPersons << " pepole:" << endl;
+	for (int i = 0; i < o_NumOfPersons; i++)
 	{
 		newPerson = SinglePersonInputProcedure(o_PersonArr);
+		/// The next 2 lines inteded to Validate that the KeyID is unique.
+		newPersonCopy = new Person(newPerson->GetKeyID(), EMPTYNAME);
+		binaryTreeForKeysValidation.Insert(newPersonCopy, binaryTreeForKeysValidationNumOfComp);
 		o_PersonArr.push_back(newPerson);
 	}
 }
@@ -65,20 +81,10 @@ void SelectionProblem::KeyIDValidation(vector<Person*> i_PersonArr, int i_KeyID)
 		throw new exception("Invalid key ID!");
 	}
 
-	if (IsKeyIDExist(i_PersonArr, i_KeyID))
-	{
-		throw new exception("Invalid input, ID already exist.");
-	}
-}
-
-bool SelectionProblem::IsKeyIDExist(vector<Person*> i_PersonArr, int i_KeyID)
-{
-	for (int i = 0; i < i_PersonArr.size(); i++) {
-		if (i_PersonArr[i]->GetKeyID() == i_KeyID)
-			return true;
-	}
-
-	return false;
+	//if (IsKeyIDExist(i_PersonArr, i_KeyID))
+	//{
+	//	throw new exception("Invalid input, ID already exist.");
+	//}
 }
 
 Person* SelectionProblem::SinglePersonInputProcedure(vector<Person*> i_PersonArr)
@@ -111,13 +117,18 @@ Person* SelectionProblem::SinglePersonInputProcedure(vector<Person*> i_PersonArr
 	return newPerson;
 }
 
-int SelectionProblem::GetKthPerson()
+int SelectionProblem::GetKthPerson(int i_NumOfPersons)
 {
 	int reskthPerson;
 
-	/// Add validation that k < NumOfPersons.  
 	cout << "Please enter the 'k' largest Person you want by key :";
 	cin >> reskthPerson;
+
+	if (reskthPerson < 1 || reskthPerson > i_NumOfPersons)
+	{
+		cout << "Invalid choice. K'th person must be between 1 to " << i_NumOfPersons << endl;
+		throw new exception();
+	}
 
 	return reskthPerson;
 }

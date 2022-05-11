@@ -23,7 +23,7 @@ public:
 	Person* Min();
 	Person* DeleteMin(int& io_NumComp);
 	void Insert(Person* i_NewPerson, int& io_NumComp);
-	void BuildHeap(vector<Person*> i_PersonArr, int i_Size, int& io_NumComp); // Using Floyd algorithm.
+	void BuildHeap(vector<Person*>& i_PersonArr, int i_Size, int& io_NumComp); // Using Floyd algorithm.
 	void MakeEmpty();
 	bool IsEmpty();
 };

@@ -15,7 +15,8 @@ class BSTSelectionProgram
 {
 
 public:
-	void Run(vector<Person*> personArr, int i_NumOfPersons, int i_KthPerson);
-	const Person& BST(vector<Person*> i_PersonArr, int n, int i_KthPersonIdx, int& io_NumComp);
+	void Run(vector<Person*> i_PersonArr, int i_KthPerson);
+	const Person& BSTWrapper(vector<Person*>& i_PersonArr, int i_KthPerson, int& io_NumComp);
+	const Person* BST(BinaryTreeNode* io_CurrTNode, int i_KthPerson, int& io_NodesCounter, int& io_NumComp);
 };
 

@@ -18,12 +18,12 @@ class SelectionProblem
 {
 
 public:
+	static const string EMPTYNAME;
 	void Run();
 	void InputProcedure(vector<Person*>& o_PersonArr, int& o_numOfPersons);
 	int GetNumOfPersonsProcedure();
 	Person* SinglePersonInputProcedure(vector <Person*> i_PersonArr);
 	void KeyIDValidation(vector<Person*> i_PersonArr, int i_KeyID);
 	void NameValidation(string i_Name);
-	int GetKthPerson();
-	bool IsKeyIDExist(vector<Person*> i_PersonArr, int i_KeyID);
+	int GetKthPerson(int i_NumOfPersons);
 };

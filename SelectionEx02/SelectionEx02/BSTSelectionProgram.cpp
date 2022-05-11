@@ -1,40 +1,50 @@
 #include "BSTSelectionProgram.h"
 
-void BSTSelectionProgram::Run(vector<Person*> personArr, int i_NumOfPersons, int i_KthPerson)
+void BSTSelectionProgram::Run(vector<Person*> i_PersonArr, int i_KthPerson)
 {
-	int NumComp = 0;
-	int kthPersonIdx = i_KthPerson - 1;
-	Person bstSelectionPerson = BST(personArr, i_NumOfPersons, kthPersonIdx, NumComp);
-	/// Printing
+	int numComp = 0;
+	Person bstSelectionPerson = BSTWrapper(i_PersonArr, i_KthPerson, numComp);
+	cout << "BST: ";
+	bstSelectionPerson.PrintPersonDetails();
+	cout << ", comparations: " << numComp;
 }
 
-const Person& BSTSelectionProgram::BST(vector<Person*> i_PersonArr, int n, int i_KthPersonIdx, int& io_NumComp)
+const Person& BSTSelectionProgram::BSTWrapper(vector<Person*>& i_PersonArr, int i_KthPerson, int& io_NumComp)
 {
 	BinaryTree binaryTree(i_PersonArr, io_NumComp);
-	BinaryTreeNode* binaryTreeNode = binaryTree.GetRoot();
+	BinaryTreeNode* currTNode = binaryTree.GetRoot();
+	int nodesCounter = 0;
+	return *(BST(currTNode, i_KthPerson, nodesCounter, io_NumComp));
+}
 
-	while (binaryTreeNode->GetPersonData()->GetKeyID() != i_PersonArr[i_KthPersonIdx]->GetKeyID())
+const Person* BSTSelectionProgram::BST(BinaryTreeNode* io_CurrTNode, int i_KthPerson, int& io_NodesCounter, int& io_NumComp)
+{
+	const Person* resLeft;
+	const Person* resRight;
+
+	if (io_CurrTNode == nullptr)
 	{
-		if (i_PersonArr[i_KthPersonIdx]->GetKeyID() > binaryTreeNode->GetPersonData()->GetKeyID())
+		return nullptr;
+	}
+
+	resLeft = BST(io_CurrTNode->GetLeftNode(), i_KthPerson, io_NodesCounter, io_NumComp);
+
+	if (resLeft == nullptr)
+	{
+		io_NodesCounter++;
+		if (io_NodesCounter == i_KthPerson)
 		{
-			// Right
-			binaryTreeNode = binaryTreeNode->GetRightNode();
+			return io_CurrTNode->GetPersonData();
 		}
 
 		else
 		{
-			// Left
-			binaryTreeNode = binaryTreeNode->GetLeftNode();
+			return BST(io_CurrTNode->GetRightNode(), i_KthPerson, io_NodesCounter, io_NumComp);
 		}
-
-		io_NumComp++;
 	}
 
-	if (binaryTreeNode->GetPersonData()->GetKeyID() != i_PersonArr[i_KthPersonIdx]->GetKeyID())
+	else
 	{
-		io_NumComp++;
-		// Handle error.
+		return resLeft;
 	}
-
-	return *(binaryTreeNode->GetPersonData());
 }
