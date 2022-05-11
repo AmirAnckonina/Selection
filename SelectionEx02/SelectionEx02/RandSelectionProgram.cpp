@@ -1,19 +1,20 @@
 #include "RandSelectionProgram.h"
 
-void RandSelectionProgram::Run(vector<Person*> personArr, int i_NumOfPersons, int i_KthPerson)
+void RandSelectionProgram::Run(vector<Person*> personArr, int i_KthPerson)
 {
 	int numComp = 0;
-	Person randSelectionPerson = RandSelectionWrapper(personArr, i_NumOfPersons, i_KthPerson, numComp);
-	cout << "NumComp RandSelection: " << numComp << endl;
-	/// printing.
+	Person randSelectionPerson = RandSelectionWrapper(personArr, i_KthPerson, numComp);
+	cout << "RandSelection: ";
+	randSelectionPerson.PrintPersonDetails();
+	cout << ", comparations: " << numComp << endl;
 }
 
-const Person& RandSelectionProgram::RandSelectionWrapper(vector<Person*>& io_PersonArr, int i_NumOfPersons, int i_KPerson, int& io_NumComp)
+const Person& RandSelectionProgram::RandSelectionWrapper(vector<Person*>& io_PersonArr, int i_KthPerson, int& io_NumComp)
 {
-	/// We're sending the K person minus 1 so we will reach the relevant index.
-	int kthPersonIdx = i_KPerson - 1;
+	/// We're sending the Kth person minus 1 so we will reach the relevant index.
+	int kthPersonIdx = i_KthPerson - 1;
 	io_NumComp = 0;
-	return *(RandSelection(io_PersonArr, 0, i_NumOfPersons - 1, kthPersonIdx, io_NumComp));
+	return *(RandSelection(io_PersonArr, 0, io_PersonArr.size() - 1, kthPersonIdx, io_NumComp));
 }
 
 const Person* RandSelectionProgram::RandSelection(vector<Person*>& io_PersonArr, int i_LeftIndex, int i_RightIndex, int i_KPersonIndex, int& io_NumComp)
@@ -43,7 +44,18 @@ int RandSelectionProgram::Partition(vector<Person*>& io_PersonArr, int i_LeftInd
 {
 	int choosedPivotCurrentIndex;
 	bool pivotIsLeftToNonPivot;
-	int randomPivot = i_LeftIndex + (rand() % (i_RightIndex - i_LeftIndex));
+	int randomPivot;
+	
+	/// Avoiding modulo on 0 case.
+	if (i_RightIndex == i_LeftIndex)
+	{
+		randomPivot = i_LeftIndex;	
+	}
+
+	else
+	{
+		randomPivot = i_LeftIndex + (rand() % (i_RightIndex - i_LeftIndex));
+	}
 
 	swap(io_PersonArr[randomPivot], io_PersonArr[i_LeftIndex]); /// So now the most left is the pivot and we can start the partition.
 	pivotIsLeftToNonPivot = true;

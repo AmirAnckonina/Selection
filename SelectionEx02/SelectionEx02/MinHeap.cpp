@@ -10,6 +10,7 @@ void MinHeap::FixHeap(int i_NodeIndex, int& io_NumComp)
 		io_NumComp++;
 		minIndex = left;
 	}
+
 	else
 	{
 		minIndex = i_NodeIndex;
@@ -27,7 +28,6 @@ void MinHeap::FixHeap(int i_NodeIndex, int& io_NumComp)
 		Swap(i_NodeIndex, minIndex);
 		FixHeap(minIndex, io_NumComp);
 	}
-
 }
 
 void MinHeap::Swap(int i_NodeInd1, int i_NodeInd2)
@@ -67,7 +67,7 @@ Person* MinHeap::DeleteMin(int& io_NumComp)
 
 	Person* min = new Person((*Min()));
 	m_HeapSize--;
-	m_PersonData[0] = m_PersonData[m_HeapSize - 1]; // minus 1?
+	m_PersonData[0] = m_PersonData[m_HeapSize]; // minus 1?
 	FixHeap(0, io_NumComp);
 
 	return min;
@@ -90,7 +90,7 @@ void MinHeap::Insert(Person* i_NewPerson, int& io_NumComp)
 	m_PersonData[i] = i_NewPerson;
 }
 
-void MinHeap::BuildHeap(vector<Person*> i_PersonArr, int i_Size, int& io_NumComp)
+void MinHeap::BuildHeap(vector<Person*>& i_PersonArr, int i_Size, int& io_NumComp)
 {
 	m_HeapSize = m_MaxSize = i_Size;
 
