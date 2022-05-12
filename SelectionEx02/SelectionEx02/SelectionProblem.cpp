@@ -12,20 +12,15 @@ void SelectionProblem::Run()
 	int kthPerson;
 	int seed;
 
-	try
-	{
-		/*cin >> seed;
-		srand(seed);*/
-		InputProcedure(personArr, numOfPersons);
-		kthPerson = GetKthPerson(numOfPersons);
-		randSelection.Run(personArr, kthPerson);
-		heapSelection.Run(personArr, kthPerson);
-		bstSelection.Run(personArr, kthPerson);
-	}
-	catch (...)
-	{
-		exit(1);
-	}
+
+	cin >> seed;
+	srand(seed);
+	InputProcedure(personArr, numOfPersons);
+	kthPerson = GetKthPerson(numOfPersons);
+	randSelection.Run(personArr, kthPerson);
+	heapSelection.Run(personArr, kthPerson);
+	bstSelection.Run(personArr, kthPerson);
+	FreePersonArr(personArr);
 }
 
 void SelectionProblem::InputProcedure(vector<Person*>& o_PersonArr, int& o_NumOfPersons)
@@ -55,7 +50,8 @@ int SelectionProblem::GetNumOfPersonsProcedure()
 	cin >> numOfPersons;
 	if (numOfPersons == NULL)
 	{
-		throw new exception("Invalid num of persons input");
+		cout << "Invalid num of persons input";
+		exit(1);
 	}
 
 	cin.ignore();
@@ -67,10 +63,9 @@ void SelectionProblem::NameValidation(string i_Name)
 {
 	if (i_Name.length() == 0) 
 	{
-		throw new exception("Invalid name!");
+		cout << "Invalid name";
+		exit(1);
 	}
-
-	/// Add validation to the chars (contain only letters).
 }
 
 void SelectionProblem::KeyIDValidation(vector<Person*> i_PersonArr, int i_KeyID)
@@ -78,13 +73,10 @@ void SelectionProblem::KeyIDValidation(vector<Person*> i_PersonArr, int i_KeyID)
 	/// Check Line content.
 	if (i_KeyID == 0) 
 	{
-		throw new exception("Invalid key ID!");
+		cout << "Invalid key ID";
+		exit(1);
 	}
 
-	//if (IsKeyIDExist(i_PersonArr, i_KeyID))
-	//{
-	//	throw new exception("Invalid input, ID already exist.");
-	//}
 }
 
 Person* SelectionProblem::SinglePersonInputProcedure(vector<Person*> i_PersonArr)
@@ -127,9 +119,19 @@ int SelectionProblem::GetKthPerson(int i_NumOfPersons)
 	if (reskthPerson < 1 || reskthPerson > i_NumOfPersons)
 	{
 		cout << "Invalid choice. K'th person must be between 1 to " << i_NumOfPersons << endl;
-		throw new exception();
+		exit(1);
 	}
 
 	return reskthPerson;
+}
+
+void SelectionProblem::FreePersonArr(vector<Person*>& io_PersonArr)
+{
+	for (int idx = 0; idx < io_PersonArr.size(); idx++)
+	{
+		delete io_PersonArr[idx];
+	}
+
+	io_PersonArr.clear();
 }
 

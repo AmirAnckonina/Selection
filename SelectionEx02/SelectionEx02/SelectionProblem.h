@@ -26,4 +26,5 @@ public:
 	void KeyIDValidation(vector<Person*> i_PersonArr, int i_KeyID);
 	void NameValidation(string i_Name);
 	int GetKthPerson(int i_NumOfPersons);
+	void FreePersonArr(vector<Person*>& io_PersonArr);
 };

@@ -15,6 +15,6 @@ class HeapSelectionProgram
 {
 public:
 	void Run(vector<Person*> personArr, int i_KthPerson);
-	const Person& SelectHeap(vector<Person*>& i_PersonArr, int i_KthPerson, int& io_NumComp);
+	const Person& SelectHeap(MinHeap& io_MinHeap, int i_KthPerson, int& io_NumComp);
 };
 

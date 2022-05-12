@@ -4,20 +4,19 @@
 void HeapSelectionProgram::Run(vector<Person*> personArr, int i_KthPerson) 
 {
 	int numComp = 0;
-	Person heapSelectionPerson = SelectHeap(personArr, i_KthPerson, numComp);
+	MinHeap minHeap(personArr, personArr.size(), numComp); // BuildHeap from array.
+	Person heapSelectionPerson = SelectHeap(minHeap, i_KthPerson, numComp);
 	cout << "heapSelection: ";
 	heapSelectionPerson.PrintPersonDetails();
 	cout << ", comparations: " << numComp << endl;
 }
 
-const Person& HeapSelectionProgram::SelectHeap(vector<Person*>& i_PersonArr, int i_KthPerson, int& io_NumComp)
+const Person& HeapSelectionProgram::SelectHeap(MinHeap& io_MinHeap, int i_KthPerson, int& io_NumComp)
 {
-	MinHeap minHeap(i_PersonArr, i_PersonArr.size(), io_NumComp); // BuildHeap from array.
-
 	for (int i = 1; i < i_KthPerson; i++)
 	{
-		minHeap.DeleteMin(io_NumComp);
+		io_MinHeap.DeleteMin(io_NumComp);
 	}
 
-	return *(minHeap.DeleteMin(io_NumComp));
+	return *(io_MinHeap.DeleteMin(io_NumComp));
 }
