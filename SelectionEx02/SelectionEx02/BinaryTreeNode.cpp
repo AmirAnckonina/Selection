@@ -6,3 +6,11 @@ BinaryTreeNode::BinaryTreeNode(Person* i_Person, BinaryTreeNode* i_LeftNode, Bin
 	i_LeftNode = nullptr;
 	i_RightNode = nullptr;
 }
+
+void BinaryTreeNode::SetBinaryNodeData(Person* i_PersonData)
+{
+	Person* temp = this->m_PersonData;
+	this->m_PersonData = i_PersonData;
+	delete temp;
+}
+

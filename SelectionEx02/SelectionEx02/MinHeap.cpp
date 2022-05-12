@@ -43,15 +43,6 @@ MinHeap::MinHeap(vector<Person*> i_PersonArr, int i_Size, int& io_NumComp)
 	BuildHeap(i_PersonArr, i_Size, io_NumComp);
 }
 
-MinHeap::~MinHeap()
-{
-	MakeEmpty();
-}
-
-//Person& MinHeap::Min()
-//{
-//	return m_PersonData[0];
-//}
 
 Person* MinHeap::Min()
 {
@@ -69,6 +60,7 @@ Person* MinHeap::DeleteMin(int& io_NumComp)
 	m_HeapSize--;
 	m_PersonData[0] = m_PersonData[m_HeapSize]; // minus 1?
 	FixHeap(0, io_NumComp);
+	m_PersonData.resize(m_HeapSize);
 
 	return min;
 }
@@ -93,18 +85,17 @@ void MinHeap::Insert(Person* i_NewPerson, int& io_NumComp)
 void MinHeap::BuildHeap(vector<Person*>& i_PersonArr, int i_Size, int& io_NumComp)
 {
 	m_HeapSize = m_MaxSize = i_Size;
-
 	m_PersonData = i_PersonArr; // Assign array i_PersonArr[] to data pointer.
-	//m_Allocated = 0; // Memory not allocated by heap.
 
-	for (int i = i_Size / 2 - 1; i >= 0; i--) {
+	for (int i = i_Size / 2 - 1; i >= 0; i--)
+	{
 		FixHeap(i, io_NumComp);
 	}
 }
 
 void MinHeap::MakeEmpty()
 {
-	//delete[] m_PersonData;
+	m_PersonData.clear();
 }
 
 bool MinHeap::IsEmpty()
