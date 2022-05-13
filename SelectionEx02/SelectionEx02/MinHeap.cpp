@@ -52,7 +52,7 @@ Person* MinHeap::Min()
 Person* MinHeap::DeleteMin(int& io_NumComp)
 {
 	if (m_HeapSize < 1) {
-		cout << "Invalid operaion!" << endl;
+		cout << "invalid input" << endl;
 		exit(1);
 	}
 

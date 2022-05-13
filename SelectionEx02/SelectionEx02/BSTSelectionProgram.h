@@ -7,9 +7,7 @@
 #include <sstream>
 #include <vector>
 #include <string>
-#include "Person.h"
 #include "BinaryTree.h"
-#include "BinaryTreeNode.h"
 
 class BSTSelectionProgram
 {

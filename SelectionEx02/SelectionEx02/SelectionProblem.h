@@ -6,8 +6,6 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
-#include <string>
-#include "Person.h"
 #include "RandSelectionProgram.h"
 #include "HeapSelectionProgram.h"
 #include "BSTSelectionProgram.h"

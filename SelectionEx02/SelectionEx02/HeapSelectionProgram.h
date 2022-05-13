@@ -8,7 +8,6 @@
 #include <vector>
 #include <string>
 #include <vector>
-#include "Person.h"
 #include "MinHeap.h"
 
 class HeapSelectionProgram

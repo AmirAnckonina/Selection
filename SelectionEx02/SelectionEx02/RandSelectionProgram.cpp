@@ -6,7 +6,7 @@ void RandSelectionProgram::Run(vector<Person*> personArr, int i_KthPerson)
 	Person randSelectionPerson = RandSelectionWrapper(personArr, i_KthPerson, numComp);
 	cout << "RandSelection: ";
 	randSelectionPerson.PrintPersonDetails();
-	cout << ", comparations: " << numComp << endl;
+	cout << "[0-9]{1," << numComp << "} comparisons" << endl;
 }
 
 const Person& RandSelectionProgram::RandSelectionWrapper(vector<Person*>& io_PersonArr, int i_KthPerson, int& io_NumComp)

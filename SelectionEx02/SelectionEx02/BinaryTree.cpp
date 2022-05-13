@@ -95,7 +95,7 @@ void BinaryTree::Insert(Person* i_Person, int& io_NumComp)
 
 		else /// Error -> matching keyID
 		{
-			cout << "Key ID already exist.";
+			cout << "invalid input";
 			exit(1);
 		}
 

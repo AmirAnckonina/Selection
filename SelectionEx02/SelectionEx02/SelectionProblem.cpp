@@ -31,7 +31,6 @@ void SelectionProblem::InputProcedure(vector<Person*>& o_PersonArr, int& o_NumOf
 	int binaryTreeForKeysValidationNumOfComp = 0;
 	o_NumOfPersons = GetNumOfPersonsProcedure();
 
-	cout << "Please enter " << o_NumOfPersons << " pepole:" << endl;
 	for (int i = 0; i < o_NumOfPersons; i++)
 	{
 		newPerson = SinglePersonInputProcedure(o_PersonArr);
@@ -46,11 +45,10 @@ int SelectionProblem::GetNumOfPersonsProcedure()
 {
 	int numOfPersons;
 
-	cout << "Please enter the number of persons: ";
 	cin >> numOfPersons;
-	if (numOfPersons == NULL)
+	if (numOfPersons < 0)
 	{
-		cout << "Invalid num of persons input";
+		cout << "invalid input";
 		exit(1);
 	}
 
@@ -63,37 +61,35 @@ void SelectionProblem::NameValidation(string i_Name)
 {
 	if (i_Name.length() == 0) 
 	{
-		cout << "Invalid name";
+		cout << "invalid input";
 		exit(1);
 	}
 }
 
-void SelectionProblem::KeyIDValidation(vector<Person*> i_PersonArr, int i_KeyID)
+void SelectionProblem::KeyIDValidation(vector<Person*> i_PersonArr,int i_KeyID)
 {
-	/// Check Line content.
-	if (i_KeyID == 0) 
+
+	if (i_KeyID < 0)
 	{
-		cout << "Invalid key ID";
+		cout << "invalid input";
 		exit(1);
 	}
-
 }
 
 Person* SelectionProblem::SinglePersonInputProcedure(vector<Person*> i_PersonArr)
 {
-	int keyID;
+	string keyIDStr;
 	istringstream iss;
 	string tempNamePart, fullName, line;
 	Person* newPerson;
+	int keyID;
 
-	cout << "Enter person ID and Name" << endl;
 	getline(cin, line);
 	iss.clear();
 	iss.str(line);
 	fullName.clear();
 	iss >> keyID;
 	KeyIDValidation(i_PersonArr, keyID);
-
 	iss >> tempNamePart;
 	fullName += tempNamePart;
 	while (!iss.eof()) 
@@ -113,12 +109,11 @@ int SelectionProblem::GetKthPerson(int i_NumOfPersons)
 {
 	int reskthPerson;
 
-	cout << "Please enter the 'k' largest Person you want by key :";
 	cin >> reskthPerson;
 
 	if (reskthPerson < 1 || reskthPerson > i_NumOfPersons)
 	{
-		cout << "Invalid choice. K'th person must be between 1 to " << i_NumOfPersons << endl;
+		cout << "invalid input";
 		exit(1);
 	}
 

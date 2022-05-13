@@ -6,7 +6,7 @@ void BSTSelectionProgram::Run(vector<Person*> i_PersonArr, int i_KthPerson)
 	Person bstSelectionPerson = BSTWrapper(i_PersonArr, i_KthPerson, numComp);
 	cout << "BST: ";
 	bstSelectionPerson.PrintPersonDetails();
-	cout << ", comparations: " << numComp;
+	cout << "[0-9]{1," << numComp << "} comparisons" << endl;
 }
 
 const Person& BSTSelectionProgram::BSTWrapper(vector<Person*>& i_PersonArr, int i_KthPerson, int& io_NumComp)
