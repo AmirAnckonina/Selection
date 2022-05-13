@@ -1,5 +1,5 @@
 #pragma once
-#include "Person.h";
+#include "Person.h"
 
 class BinaryTreeNode 
 {
@@ -10,8 +10,8 @@ private:
 
 public:
 	BinaryTreeNode() { m_PersonData = nullptr; m_Left = m_Right = nullptr; };
-	BinaryTreeNode(Person* i_Person, BinaryTreeNode* i_LeftNode, BinaryTreeNode* i_RightNode);
-	/// ~BinaryTreeNode() { delete m_PersonData; };
+	BinaryTreeNode(Person* i_Person);
+	/// D'tor unnecassary since BinaryTree Class responsible for it.
 	void SetBinaryNodeData(Person* i_PersonData);
 	Person* GetPersonData() { return m_PersonData; }
 	BinaryTreeNode* GetLeftNode() { return m_Left; }

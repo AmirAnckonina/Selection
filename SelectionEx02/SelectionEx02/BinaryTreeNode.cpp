@@ -1,10 +1,9 @@
 #include "BinaryTreeNode.h"
 
-BinaryTreeNode::BinaryTreeNode(Person* i_Person, BinaryTreeNode* i_LeftNode, BinaryTreeNode* i_RightNode)
+BinaryTreeNode::BinaryTreeNode(Person* i_Person)
 {
 	m_PersonData = i_Person;
-	i_LeftNode = nullptr;
-	i_RightNode = nullptr;
+	m_Left = m_Right = nullptr;
 }
 
 void BinaryTreeNode::SetBinaryNodeData(Person* i_PersonData)

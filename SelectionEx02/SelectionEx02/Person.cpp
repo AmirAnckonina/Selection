@@ -2,5 +2,5 @@
 
 void Person::PrintPersonDetails()
 {
-	cout << m_KeyID << " " << m_Name;
+	cout << m_KeyID << " " << m_Name << " ";
 }

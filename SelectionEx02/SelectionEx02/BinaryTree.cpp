@@ -1,7 +1,8 @@
-#include "BinaryTree.h";
+#include "BinaryTree.h"
 
 BinaryTree::BinaryTree(vector<Person*> i_PersonArr, int& io_NumComp)
 {
+	MakeEmpty();
 	CreateTreeFromArr(i_PersonArr, io_NumComp);
 }
 
@@ -35,9 +36,9 @@ BinaryTreeNode* BinaryTree::Find(int i_PersonKeyID, int& io_NumComp, BinaryTreeN
 	BinaryTreeNode* curr = m_Root;
 	o_ParentOfFoundNode = nullptr;
 
-	while (curr != nullptr) 
+	while (curr != nullptr)
 	{
-		if (i_PersonKeyID == curr->m_PersonData->GetKeyID()) 
+		if (i_PersonKeyID == curr->m_PersonData->GetKeyID())
 		{
 			io_NumComp++;
 			return curr;
@@ -46,12 +47,12 @@ BinaryTreeNode* BinaryTree::Find(int i_PersonKeyID, int& io_NumComp, BinaryTreeN
 		else
 		{
 			o_ParentOfFoundNode = curr;
-			if (i_PersonKeyID < curr->m_PersonData->GetKeyID()) 
+			if (i_PersonKeyID < curr->m_PersonData->GetKeyID())
 			{
 				curr = curr->m_Left;
 			}
 
-			else 
+			else
 			{
 				curr = curr->m_Right;
 			}
@@ -103,7 +104,7 @@ void BinaryTree::Insert(Person* i_Person, int& io_NumComp)
 	}
 
 	/// After we reached the relevant place to insert the new key: 
-	newNode = new BinaryTreeNode(i_Person, nullptr, nullptr);
+	newNode = new BinaryTreeNode(i_Person);
 	if (parent == nullptr)
 	{
 		m_Root = newNode;
@@ -142,19 +143,19 @@ void BinaryTree::Delete(int i_KeyIDToDelete, int& io_NumComp)
 	{
 		if (nodeToDelete != m_Root)
 		{
-			if (nodeToDeleteParent->m_Left == nodeToDelete) 
+			if (nodeToDeleteParent->m_Left == nodeToDelete)
 			{
 				nodeToDeleteParent->m_Left = nullptr;
 			}
 
-			else 
+			else
 			{
 				nodeToDeleteParent->m_Right = nullptr;
 			}
 		}
 
 		// if the tree has only a root node, set it to null
-		else 
+		else
 		{
 			m_Root = nullptr;
 		}
@@ -168,27 +169,28 @@ void BinaryTree::Delete(int i_KeyIDToDelete, int& io_NumComp)
 		// Get minimum key of the right sub-tree, so he will be the successor.
 		BinaryTreeNode* successor = GetMinimumKey(nodeToDelete->m_Right);
 		/// Update the nodeTo Delete Person Data to the succssor data
-		nodeToDelete->SetBinaryNodeData(successor->GetPersonData()); 
+		nodeToDelete->SetBinaryNodeData(successor->GetPersonData());
 		delete successor; /// For sure is a leave, so can be deleted safetly.
 	}
 
 	// nodeToDelete has only one child
-	else 
+	else
 	{
 		// choose a child node
 		BinaryTreeNode* child = (nodeToDelete->m_Left) ? nodeToDelete->m_Left : nodeToDelete->m_Right;
 		if (nodeToDelete != m_Root)
 		{
-			if (nodeToDelete == nodeToDeleteParent->m_Left) 
+			if (nodeToDeleteParent != nullptr && nodeToDelete == nodeToDeleteParent->m_Left)
 			{
 				nodeToDeleteParent->m_Left = child;
 			}
-			else {
+			else
+			{
 				nodeToDeleteParent->m_Right = child;
 			}
 		}
 
-		else 
+		else
 		{
 			m_Root = child;
 		}

@@ -1,13 +1,4 @@
 #pragma once
-#include <stdlib.h>
-#include <stdio.h>
-#include <random>
-#include <cstdlib>
-#include <iostream>
-#include <sstream>
-#include <vector>
-#include <string>
-#include <vector>
 #include "MinHeap.h"
 
 class HeapSelectionProgram

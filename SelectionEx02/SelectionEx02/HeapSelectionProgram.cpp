@@ -6,9 +6,9 @@ void HeapSelectionProgram::Run(vector<Person*> personArr, int i_KthPerson)
 	int numComp = 0;
 	MinHeap minHeap(personArr, personArr.size(), numComp); // BuildHeap from array.
 	Person heapSelectionPerson = SelectHeap(minHeap, i_KthPerson, numComp);
-	cout << "heapSelection: ";
+	cout << "selectHeap: ";
 	heapSelectionPerson.PrintPersonDetails();
-	cout << "[0-9]{1," << numComp << "} comparisons" << endl;
+	cout << numComp << " comparisons" << endl;
 }
 
 const Person& HeapSelectionProgram::SelectHeap(MinHeap& io_MinHeap, int i_KthPerson, int& io_NumComp)

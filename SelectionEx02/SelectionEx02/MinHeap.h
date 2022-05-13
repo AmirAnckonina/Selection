@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 #include "Person.h"
 
 class MinHeap
@@ -16,7 +17,6 @@ class MinHeap
 
 public:
 	MinHeap(vector<Person*> i_PersonArr, int i_Size, int& io_NumComp); // Turn i_Person[] into heap.
-	/// No need for D'tor since vector free his elemnts.
 
 	Person* Min();
 	Person* DeleteMin(int& io_NumComp);

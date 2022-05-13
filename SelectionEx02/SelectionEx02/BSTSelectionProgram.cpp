@@ -6,7 +6,7 @@ void BSTSelectionProgram::Run(vector<Person*> i_PersonArr, int i_KthPerson)
 	Person bstSelectionPerson = BSTWrapper(i_PersonArr, i_KthPerson, numComp);
 	cout << "BST: ";
 	bstSelectionPerson.PrintPersonDetails();
-	cout << "[0-9]{1," << numComp << "} comparisons" << endl;
+	cout << numComp << " comparisons";
 }
 
 const Person& BSTSelectionProgram::BSTWrapper(vector<Person*>& i_PersonArr, int i_KthPerson, int& io_NumComp)
@@ -20,7 +20,6 @@ const Person& BSTSelectionProgram::BSTWrapper(vector<Person*>& i_PersonArr, int 
 const Person* BSTSelectionProgram::BST(BinaryTreeNode* io_CurrTNode, int i_KthPerson, int& io_NodesCounter, int& io_NumComp)
 {
 	const Person* resLeft;
-	const Person* resRight;
 
 	if (io_CurrTNode == nullptr)
 	{
